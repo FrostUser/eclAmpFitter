@@ -19,6 +19,6 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -rf *.o $(EXECUTABLE)
+	rm -rf sources/*.o $(EXECUTABLE)
 #all:
 #	g++ `root-config --cflags --glibs` -lRGL -lGeom main.cc
