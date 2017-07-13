@@ -1,0 +1,4 @@
+*.o
+*.swp
+*.root
+a.out
