@@ -54,5 +54,7 @@ int main(int argc, const char** argv)
 
   in->Close();
 
+  std::cout << "Done." << std::endl;
+
   return 0;
 }
