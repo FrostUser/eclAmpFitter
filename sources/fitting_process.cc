@@ -188,12 +188,17 @@ void FittingProcess::fitHist(int crystal, TH1F *hist, bool signal_only, RooDataH
                     NormRange("Cut"));
       chi2 = enframe->chiSquare("model", "data", 6);
     } else {
+      std::cout << "Plotting 1" << std::endl;
       // Plotting signal
-      signal->plotOn(enframe, Range("Cut"), NormRange("Cut"));
-      signal->plotOn(enframe, LineColor(kRed), Name("model"), NormRange("Cut"));
+      signal->plotOn(enframe, Name("signal_pdf"), Range("Cut"), NormRange("Cut"));
+      std::cout << "Plotting 2" << std::endl;
+      signal->plotOn(enframe, LineColor(kRed), Name("model"), Range(min, max), NormRange("Cut"));
+      std::cout << "Plotting 3" << std::endl;
       chi2 = enframe->chiSquare("model", "data", 3);
     }
+    std::cout << "Drawing" << std::endl;
     enframe->Draw();
+    std::cout << "Stopped drawing" << std::endl;
 
     enframe->Write(TString("plot_") + Long_t(crystal));
   }
