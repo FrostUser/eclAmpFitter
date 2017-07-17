@@ -23,6 +23,12 @@ private:
   };
 
   static ECLCrystalGeometry* m_instance;
+  /**
+   * mapping[0] : CellID -> CrateID
+   * mapping[1] : CellID -> ShaperID
+   * mapping[2] : CellID -> ShaperChannel
+   */
+  int** mapping;
 
 public:
   ECLCrystalGeometry();
@@ -31,6 +37,10 @@ public:
 
   int getPhiId(int ch);
   int getThetaId(int ch);
+
+  int getCrate(int ch);
+  int getShaper(int ch);
+  int getShaperChannel(int ch);
 };
 
 #endif // CRYSTAL_GEOMETRY_H

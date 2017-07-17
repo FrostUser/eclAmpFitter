@@ -17,6 +17,7 @@ using namespace RooFit;
 int main(int argc, const char** argv)
 {
   if (argc < 2) {
+    // See config files in config/*.cfg for examples.
     std::cout << "Usage:" << std::endl
               << "   " << argv[0] << " config_file" << std::endl;
 
@@ -26,8 +27,6 @@ int main(int argc, const char** argv)
   ConfigLoader cfg_loader(argv[1]);
 
   TFile* in = new TFile(cfg_loader.get("input").c_str(), "READ");
-//  TFile* in = new TFile("/home/frostuser/Code/Belle2/CrystalCalibration/00_Scripts/histos_2017mar_phi.root", "READ");
-//  TFile* in = new TFile("../root_scripts/histos_2017mar.root", "READ");
   TH1F* hist;
   FittingProcess proc(cfg_loader.get("output").c_str());
 
@@ -53,6 +52,8 @@ int main(int argc, const char** argv)
   proc.run(cfg_loader.getBool("signal_only"));
 
   in->Close();
+
+  std::cout << "Done." << std::endl;
 
   return 0;
 }
