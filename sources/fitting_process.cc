@@ -214,6 +214,10 @@ void FittingProcess::fitHist(int crystal, TH1F *hist, bool signal_only, RooDataH
 
   m_ftree->setInt("evt_count", N);
 
+  m_ftree->setInt("crate", geom->getCrate(crystal));
+  m_ftree->setInt("shaper", geom->getShaper(crystal));
+  m_ftree->setInt("shp_ch", geom->getShaperChannel(crystal));
+
   m_ftree->setInt("phi", geom->getPhiId(crystal));
   m_ftree->setInt("theta", geom->getThetaId(crystal));
 
